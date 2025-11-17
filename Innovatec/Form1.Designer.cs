@@ -61,8 +61,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbOrigen = new System.Windows.Forms.ComboBox();
+            this.cbDestino = new System.Windows.Forms.ComboBox();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@
             this.btnConexiones = new System.Windows.Forms.Button();
             this.btnConexo = new System.Windows.Forms.Button();
             this.lblResultadoJerarquia = new System.Windows.Forms.Label();
+            this.lblRuta = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tbpJerarquia.SuspendLayout();
             this.tbpRutas.SuspendLayout();
@@ -370,12 +371,13 @@
             this.btnAgregarRuta.TabIndex = 6;
             this.btnAgregarRuta.Text = "Agregar Ruta";
             this.btnAgregarRuta.UseVisualStyleBackColor = true;
+            this.btnAgregarRuta.Click += new System.EventHandler(this.btnAgregarRuta_Click);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnCalcular);
-            this.groupBox4.Controls.Add(this.comboBox2);
-            this.groupBox4.Controls.Add(this.comboBox1);
+            this.groupBox4.Controls.Add(this.cbDestino);
+            this.groupBox4.Controls.Add(this.cbOrigen);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Location = new System.Drawing.Point(390, 28);
@@ -403,21 +405,21 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Hasta:";
             // 
-            // comboBox1
+            // cbOrigen
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(53, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cbOrigen.FormattingEnabled = true;
+            this.cbOrigen.Location = new System.Drawing.Point(53, 19);
+            this.cbOrigen.Name = "cbOrigen";
+            this.cbOrigen.Size = new System.Drawing.Size(121, 21);
+            this.cbOrigen.TabIndex = 2;
             // 
-            // comboBox2
+            // cbDestino
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(53, 48);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 3;
+            this.cbDestino.FormattingEnabled = true;
+            this.cbDestino.Location = new System.Drawing.Point(53, 48);
+            this.cbDestino.Name = "cbDestino";
+            this.cbDestino.Size = new System.Drawing.Size(121, 21);
+            this.cbDestino.TabIndex = 3;
             // 
             // btnCalcular
             // 
@@ -427,9 +429,11 @@
             this.btnCalcular.TabIndex = 4;
             this.btnCalcular.Text = "Calcular Ruta";
             this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.lblRuta);
             this.groupBox5.Controls.Add(this.lblResultadosRuta);
             this.groupBox5.Controls.Add(this.btnConexo);
             this.groupBox5.Controls.Add(this.btnConexiones);
@@ -475,6 +479,7 @@
             this.btnConexiones.TabIndex = 2;
             this.btnConexiones.Text = "Mostrar Conexiones";
             this.btnConexiones.UseVisualStyleBackColor = true;
+            this.btnConexiones.Click += new System.EventHandler(this.btnConexiones_Click);
             // 
             // btnConexo
             // 
@@ -484,14 +489,21 @@
             this.btnConexo.TabIndex = 3;
             this.btnConexo.Text = "¿Es Conexo el Parque?";
             this.btnConexo.UseVisualStyleBackColor = true;
+            this.btnConexo.Click += new System.EventHandler(this.btnConexo_Click);
             // 
             // lblResultadoJerarquia
             // 
-            this.lblResultadoJerarquia.AutoSize = true;
             this.lblResultadoJerarquia.Location = new System.Drawing.Point(9, 184);
             this.lblResultadoJerarquia.Name = "lblResultadoJerarquia";
-            this.lblResultadoJerarquia.Size = new System.Drawing.Size(0, 13);
+            this.lblResultadoJerarquia.Size = new System.Drawing.Size(280, 118);
             this.lblResultadoJerarquia.TabIndex = 3;
+            // 
+            // lblRuta
+            // 
+            this.lblRuta.Location = new System.Drawing.Point(233, 20);
+            this.lblRuta.Name = "lblRuta";
+            this.lblRuta.Size = new System.Drawing.Size(332, 106);
+            this.lblRuta.TabIndex = 4;
             // 
             // Form1
             // 
@@ -503,7 +515,6 @@
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tbpJerarquia.ResumeLayout(false);
-            this.tbpJerarquia.PerformLayout();
             this.tbpRutas.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -554,8 +565,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnCalcular;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbDestino;
+        private System.Windows.Forms.ComboBox cbOrigen;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblResultadosRuta;
@@ -565,6 +576,7 @@
         private System.Windows.Forms.Button btnConexo;
         private System.Windows.Forms.Button btnConexiones;
         private System.Windows.Forms.Label lblResultadoJerarquia;
+        private System.Windows.Forms.Label lblRuta;
     }
 }
 

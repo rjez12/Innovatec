@@ -173,6 +173,109 @@ namespace Innovatec
             }
             lblResultadoJerarquia.Text = "Recorrido Pre-Orden:\n" + arbol.ObtenerRecorridoPreOrden();
         }
+
+        private void btnAgregarRuta_Click(object sender, EventArgs e)
+        {
+            string origen = tbOrigen.Text;
+            string destino = tbDestino.Text;
+            int distancia = (int)numDistancia.Value;
+
+            if (string.IsNullOrWhiteSpace(origen) || string.IsNullOrWhiteSpace(destino) || distancia <= 0)
+            {
+                MessageBox.Show("Ingrese origen, destino y una distancia válida (> 0).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (origen.Equals(destino, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("El origen y el destino no pueden ser el mismo edificio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            grafo.AgregarRuta(origen, destino, distancia);
+            lblRuta.Text = $"Ruta agregada: {origen} <-> {destino} ({distancia}m)";
+
+            ActualizarCombosEdificios(); // Actualizar listas desplegables
+
+            // Limpiar campos
+            tbOrigen.Clear();
+            tbDestino.Clear();
+            numDistancia.Value = 10;
+            tbOrigen.Focus();
+        }
+
+        // Esta función rellena TODOS los ComboBox con la lista de edificios
+        private void ActualizarCombosEdificios()
+        {
+            List<string> edificios = grafo.ObtenerTodosLosEdificios();
+
+            // Guardar selecciones actuales para no perderlas
+            string selOrigen = (string)cbOrigen.SelectedItem;
+            string selDestino = (string)cbDestino.SelectedItem;
+            string selConexiones = (string)cbConexiones.SelectedItem;
+
+            cbOrigen.Items.Clear();
+            cbDestino.Items.Clear();
+            cbConexiones.Items.Clear();
+
+            foreach (var edificio in edificios)
+            {
+                cbOrigen.Items.Add(edificio);
+                cbDestino.Items.Add(edificio);
+                cbConexiones.Items.Add(edificio);
+            }
+
+            // Restaurar selecciones si aún existen en la lista
+            if (edificios.Contains(selOrigen)) cbOrigen.SelectedItem = selOrigen;
+            if (edificios.Contains(selDestino)) cbDestino.SelectedItem = selDestino;
+            if (edificios.Contains(selConexiones)) cbConexiones.SelectedItem = selConexiones;
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            string origen = (string)cbOrigen.SelectedItem;
+            string destino = (string)cbDestino.SelectedItem;
+
+            if (string.IsNullOrWhiteSpace(origen) || string.IsNullOrWhiteSpace(destino))
+            {
+                MessageBox.Show("Seleccione un origen y un destino.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string resultado = grafo.ObtenerRutaMasCorta(origen, destino);
+            lblRuta.Text = resultado;
+        }
+
+        private void btnConexiones_Click(object sender, EventArgs e)
+        {
+            string edificio = (string)cbConexiones.SelectedItem;
+            if (string.IsNullOrWhiteSpace(edificio))
+            {
+                MessageBox.Show("Seleccione un edificio para ver sus conexiones.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            lblRuta.Text = grafo.MostrarConexiones(edificio);
+        }
+
+        private void btnConexo_Click(object sender, EventArgs e)
+        {
+            if (grafo.ObtenerTodosLosEdificios().Count == 0)
+            {
+                lblRuta.Text = "El grafo está vacío.";
+                return;
+            }
+
+            bool conexo = grafo.EsConexo();
+            if (conexo)
+            {
+                lblRuta.Text = "El grafo SÍ es conexo.\n(Se puede llegar de cualquier edificio a cualquier otro).";
+            }
+            else
+            {
+                lblRuta.Text = "El grafo NO es conexo.\n(Hay edificios aislados o 'islas' de edificios).";
+            }
+        }
     }
 }
 
