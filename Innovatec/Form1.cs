@@ -96,6 +96,83 @@ namespace Innovatec
             }
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string nombre = tbEmpleados.Text;
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                lblResultadoJerarquia.Text = "Por favor, ingrese un nombre para buscar.";
+                return;
+            }
+
+            NodoOrganizacion encontrado = arbol.Buscar(nombre);
+
+            if (encontrado != null)
+            {
+                lblResultadoJerarquia.Text = $"Encontrado: {encontrado.Nombre} ({encontrado.Cargo})";
+                // Opcional: Seleccionar el nodo en el TreeView
+                SeleccionarNodoEnTreeView(tvMostrar.Nodes, encontrado.Nombre);
+            }
+            else
+            {
+                lblResultadoJerarquia.Text = $"Empleado '{nombre}' no encontrado.";
+            }
+        }
+
+        // Función auxiliar para seleccionar el nodo en el TreeView después de buscar
+        private bool SeleccionarNodoEnTreeView(TreeNodeCollection nodos, string nombre)
+        {
+            foreach (TreeNode nodo in nodos)
+            {
+                // Extraemos el nombre del texto (ej. "Ana (Gerente)" -> "Ana")
+                string nombreNodo = nodo.Text.Split('(')[0].Trim();
+                if (nombreNodo.Equals(nombre, StringComparison.OrdinalIgnoreCase))
+                {
+                    tvMostrar.SelectedNode = nodo;
+                    nodo.EnsureVisible(); // Asegurarse de que el nodo sea visible
+                    return true;
+                }
+                if (SeleccionarNodoEnTreeView(nodo.Nodes, nombre)) return true;
+            }
+            return false;
+        }
+
+        private void btnContar_Click(object sender, EventArgs e)
+        {
+            int total = arbol.ContarEmpleados();
+            lblResultadoJerarquia.Text = $"Total de empleados: {total}";
+        }
+
+        private void btnNivel_Click(object sender, EventArgs e)
+        {
+            string nombre = tbNivel.Text;
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                lblResultadoJerarquia.Text = "Por favor, ingrese un nombre para ver su nivel.";
+                return;
+            }
+
+            int nivel = arbol.ObtenerNivel(nombre);
+
+            if (nivel != -1)
+            {
+                lblResultadoJerarquia.Text = $"{nombre} está en el nivel: {nivel}";
+            }
+            else
+            {
+                lblResultadoJerarquia.Text = $"Empleado '{nombre}' no encontrado.";
+            }
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            if (arbol.Raiz == null)
+            {
+                lblResultadoJerarquia.Text = "El árbol está vacío.";
+                return;
+            }
+            lblResultadoJerarquia.Text = "Recorrido Pre-Orden:\n" + arbol.ObtenerRecorridoPreOrden();
+        }
     }
 }
 

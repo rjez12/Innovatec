@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblResultados = new System.Windows.Forms.Label();
             this.tbEmpleados = new System.Windows.Forms.TextBox();
-            this.tbContarEmpleados = new System.Windows.Forms.TextBox();
+            this.tbNivel = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnContar = new System.Windows.Forms.Button();
             this.btnNivel = new System.Windows.Forms.Button();
@@ -125,7 +125,7 @@
             this.groupBox1.Controls.Add(this.btnNivel);
             this.groupBox1.Controls.Add(this.btnContar);
             this.groupBox1.Controls.Add(this.btnBuscar);
-            this.groupBox1.Controls.Add(this.tbContarEmpleados);
+            this.groupBox1.Controls.Add(this.tbNivel);
             this.groupBox1.Controls.Add(this.tbEmpleados);
             this.groupBox1.Controls.Add(this.lblResultados);
             this.groupBox1.Controls.Add(this.label2);
@@ -170,12 +170,12 @@
             this.tbEmpleados.Size = new System.Drawing.Size(100, 20);
             this.tbEmpleados.TabIndex = 3;
             // 
-            // tbContarEmpleados
+            // tbNivel
             // 
-            this.tbContarEmpleados.Location = new System.Drawing.Point(102, 87);
-            this.tbContarEmpleados.Name = "tbContarEmpleados";
-            this.tbContarEmpleados.Size = new System.Drawing.Size(100, 20);
-            this.tbContarEmpleados.TabIndex = 4;
+            this.tbNivel.Location = new System.Drawing.Point(102, 87);
+            this.tbNivel.Name = "tbNivel";
+            this.tbNivel.Size = new System.Drawing.Size(100, 20);
+            this.tbNivel.TabIndex = 4;
             // 
             // btnBuscar
             // 
@@ -185,6 +185,7 @@
             this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnContar
             // 
@@ -194,6 +195,7 @@
             this.btnContar.TabIndex = 6;
             this.btnContar.Text = "Contar Total";
             this.btnContar.UseVisualStyleBackColor = true;
+            this.btnContar.Click += new System.EventHandler(this.btnContar_Click);
             // 
             // btnNivel
             // 
@@ -203,6 +205,7 @@
             this.btnNivel.TabIndex = 7;
             this.btnNivel.Text = "Obtener";
             this.btnNivel.UseVisualStyleBackColor = true;
+            this.btnNivel.Click += new System.EventHandler(this.btnNivel_Click);
             // 
             // groupBox2
             // 
@@ -302,6 +305,7 @@
             this.btnMostrar.TabIndex = 8;
             this.btnMostrar.Text = "Mostrar Recorrido";
             this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // tvMostrar
             // 
@@ -528,7 +532,7 @@
         private System.Windows.Forms.Button btnNivel;
         private System.Windows.Forms.Button btnContar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox tbContarEmpleados;
+        private System.Windows.Forms.TextBox tbNivel;
         private System.Windows.Forms.TextBox tbEmpleados;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
