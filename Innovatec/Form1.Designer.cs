@@ -359,6 +359,11 @@
             // numDistancia
             // 
             this.numDistancia.Location = new System.Drawing.Point(90, 88);
+            this.numDistancia.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.numDistancia.Name = "numDistancia";
             this.numDistancia.Size = new System.Drawing.Size(120, 20);
             this.numDistancia.TabIndex = 5;

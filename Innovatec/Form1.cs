@@ -40,7 +40,7 @@ namespace Innovatec
             bool exito;
             if (arbol.Raiz == null && string.IsNullOrWhiteSpace(jefe))
             {
-                // Es el primer empleado (la raíz)
+                // Es el primer empleado
                 exito = arbol.AgregarEmpleado(null, nombre, cargo);
                 lblResultadoJerarquia.Text = $"{nombre} agregado como la raíz.";
             }
@@ -61,7 +61,7 @@ namespace Innovatec
                 }
             }
 
-            ActualizarTreeView(); // Actualizar la vista visual
+            ActualizarTreeView();
 
             // Limpiar y preparar para el siguiente
             tbNuevoEmpleado.Clear();
@@ -69,8 +69,6 @@ namespace Innovatec
             tbJefe.Text = nombre; // Sugerir al recién agregado como próximo jefe
             tbNuevoEmpleado.Focus(); // Poner el cursor listo para el siguiente nombre
         }
-
-        // Esta función "dibuja" nuestro árbol lógico en el control visual TreeView
         private void ActualizarTreeView()
         {
             tvMostrar.Nodes.Clear();
@@ -79,11 +77,11 @@ namespace Innovatec
                 TreeNode nodoRaizVisual = new TreeNode(arbol.Raiz.TextoNodo);
                 LlenarNodosTreeView(arbol.Raiz, nodoRaizVisual);
                 tvMostrar.Nodes.Add(nodoRaizVisual);
-                tvMostrar.ExpandAll(); // Mostrar todo el árbol desplegado
+                tvMostrar.ExpandAll(); // Mostrar todo el árbol
             }
         }
 
-        // Función recursiva que construye el TreeView (Esto es un RECORRIDO en sí mismo)
+        // Función recursiva que construye el TreeView
         private void LlenarNodosTreeView(NodoOrganizacion nodoLogico, TreeNode nodoVisual)
         {
             foreach (var hijoLogico in nodoLogico.Subordinados)
@@ -91,7 +89,7 @@ namespace Innovatec
                 TreeNode hijoVisual = new TreeNode(hijoLogico.TextoNodo);
                 nodoVisual.Nodes.Add(hijoVisual);
 
-                // Llamada recursiva para los subordinados de este subordinado
+                // Llamada recursiva para los empleados de este empleado
                 LlenarNodosTreeView(hijoLogico, hijoVisual);
             }
         }
@@ -119,17 +117,17 @@ namespace Innovatec
             }
         }
 
-        // Función auxiliar para seleccionar el nodo en el TreeView después de buscar
+        // Función para seleccionar el nodo en el TreeView después de buscar
         private bool SeleccionarNodoEnTreeView(TreeNodeCollection nodos, string nombre)
         {
             foreach (TreeNode nodo in nodos)
             {
-                // Extraemos el nombre del texto (ej. "Ana (Gerente)" -> "Ana")
+                // Extraemos el nombre del texto
                 string nombreNodo = nodo.Text.Split('(')[0].Trim();
                 if (nombreNodo.Equals(nombre, StringComparison.OrdinalIgnoreCase))
                 {
                     tvMostrar.SelectedNode = nodo;
-                    nodo.EnsureVisible(); // Asegurarse de que el nodo sea visible
+                    nodo.EnsureVisible();
                     return true;
                 }
                 if (SeleccionarNodoEnTreeView(nodo.Nodes, nombre)) return true;
@@ -195,7 +193,7 @@ namespace Innovatec
             grafo.AgregarRuta(origen, destino, distancia);
             lblRuta.Text = $"Ruta agregada: {origen} <-> {destino} ({distancia}m)";
 
-            ActualizarCombosEdificios(); // Actualizar listas desplegables
+            ActualizarCombosEdificios(); // Actualizar listas
 
             // Limpiar campos
             tbOrigen.Clear();
@@ -204,7 +202,7 @@ namespace Innovatec
             tbOrigen.Focus();
         }
 
-        // Esta función rellena TODOS los ComboBox con la lista de edificios
+        // Esta función rellena los ComboBox con la lista de edificios
         private void ActualizarCombosEdificios()
         {
             List<string> edificios = grafo.ObtenerTodosLosEdificios();
