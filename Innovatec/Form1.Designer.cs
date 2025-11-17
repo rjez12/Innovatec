@@ -70,6 +70,7 @@
             this.cbConexiones = new System.Windows.Forms.ComboBox();
             this.btnConexiones = new System.Windows.Forms.Button();
             this.btnConexo = new System.Windows.Forms.Button();
+            this.lblResultadoJerarquia = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tbpJerarquia.SuspendLayout();
             this.tbpRutas.SuspendLayout();
@@ -93,6 +94,7 @@
             // 
             // tbpJerarquia
             // 
+            this.tbpJerarquia.Controls.Add(this.lblResultadoJerarquia);
             this.tbpJerarquia.Controls.Add(this.tvMostrar);
             this.tbpJerarquia.Controls.Add(this.groupBox3);
             this.tbpJerarquia.Controls.Add(this.groupBox1);
@@ -290,6 +292,7 @@
             this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar Empleado";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnMostrar
             // 
@@ -478,6 +481,14 @@
             this.btnConexo.Text = "¿Es Conexo el Parque?";
             this.btnConexo.UseVisualStyleBackColor = true;
             // 
+            // lblResultadoJerarquia
+            // 
+            this.lblResultadoJerarquia.AutoSize = true;
+            this.lblResultadoJerarquia.Location = new System.Drawing.Point(9, 184);
+            this.lblResultadoJerarquia.Name = "lblResultadoJerarquia";
+            this.lblResultadoJerarquia.Size = new System.Drawing.Size(0, 13);
+            this.lblResultadoJerarquia.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,6 +499,7 @@
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tbpJerarquia.ResumeLayout(false);
+            this.tbpJerarquia.PerformLayout();
             this.tbpRutas.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -548,6 +560,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnConexo;
         private System.Windows.Forms.Button btnConexiones;
+        private System.Windows.Forms.Label lblResultadoJerarquia;
     }
 }
 
