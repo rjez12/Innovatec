@@ -40,9 +40,22 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnContar = new System.Windows.Forms.Button();
             this.btnNivel = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbJefe = new System.Windows.Forms.TextBox();
+            this.tbNuevoEmpleado = new System.Windows.Forms.TextBox();
+            this.tbNuevoCargo = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnMostrar = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tbpJerarquia.SuspendLayout();
+            this.tbpRutas.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -57,6 +70,8 @@
             // 
             // tbpJerarquia
             // 
+            this.tbpJerarquia.Controls.Add(this.treeView1);
+            this.tbpJerarquia.Controls.Add(this.groupBox3);
             this.tbpJerarquia.Controls.Add(this.groupBox1);
             this.tbpJerarquia.Location = new System.Drawing.Point(4, 22);
             this.tbpJerarquia.Name = "tbpJerarquia";
@@ -68,6 +83,7 @@
             // 
             // tbpRutas
             // 
+            this.tbpRutas.Controls.Add(this.groupBox2);
             this.tbpRutas.Location = new System.Drawing.Point(4, 22);
             this.tbpRutas.Name = "tbpRutas";
             this.tbpRutas.Padding = new System.Windows.Forms.Padding(3);
@@ -78,6 +94,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnMostrar);
             this.groupBox1.Controls.Add(this.btnNivel);
             this.groupBox1.Controls.Add(this.btnContar);
             this.groupBox1.Controls.Add(this.btnBuscar);
@@ -86,12 +103,12 @@
             this.groupBox1.Controls.Add(this.lblResultados);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(24, 17);
+            this.groupBox1.Location = new System.Drawing.Point(308, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(410, 285);
+            this.groupBox1.Size = new System.Drawing.Size(296, 149);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Funciones";
             // 
             // label1
             // 
@@ -160,6 +177,104 @@
             this.btnNivel.Text = "Obtener";
             this.btnNivel.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(16, 20);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(497, 264);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Analisis de Red";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnAgregar);
+            this.groupBox3.Controls.Add(this.tbNuevoCargo);
+            this.groupBox3.Controls.Add(this.tbNuevoEmpleado);
+            this.groupBox3.Controls.Add(this.tbJefe);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Location = new System.Drawing.Point(7, 18);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(282, 149);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Agregar Empleado";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(-3, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Nombre del Jefe:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(-1, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Nombre Empleado:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(-1, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Cargo Empleado:";
+            // 
+            // tbJefe
+            // 
+            this.tbJefe.Location = new System.Drawing.Point(97, 24);
+            this.tbJefe.Name = "tbJefe";
+            this.tbJefe.Size = new System.Drawing.Size(150, 20);
+            this.tbJefe.TabIndex = 3;
+            // 
+            // tbNuevoEmpleado
+            // 
+            this.tbNuevoEmpleado.Location = new System.Drawing.Point(97, 57);
+            this.tbNuevoEmpleado.Name = "tbNuevoEmpleado";
+            this.tbNuevoEmpleado.Size = new System.Drawing.Size(150, 20);
+            this.tbNuevoEmpleado.TabIndex = 4;
+            // 
+            // tbNuevoCargo
+            // 
+            this.tbNuevoCargo.Location = new System.Drawing.Point(97, 86);
+            this.tbNuevoCargo.Name = "tbNuevoCargo";
+            this.tbNuevoCargo.Size = new System.Drawing.Size(150, 20);
+            this.tbNuevoCargo.TabIndex = 5;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(59, 112);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(148, 23);
+            this.btnAgregar.TabIndex = 6;
+            this.btnAgregar.Text = "Agregar Empleado";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // btnMostrar
+            // 
+            this.btnMostrar.Location = new System.Drawing.Point(72, 113);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(155, 23);
+            this.btnMostrar.TabIndex = 8;
+            this.btnMostrar.Text = "Mostrar Recorrido";
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(308, 173);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(296, 129);
+            this.treeView1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,8 +285,11 @@
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tbpJerarquia.ResumeLayout(false);
+            this.tbpRutas.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -190,6 +308,17 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox tbContarEmpleados;
         private System.Windows.Forms.TextBox tbEmpleados;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.TextBox tbNuevoCargo;
+        private System.Windows.Forms.TextBox tbNuevoEmpleado;
+        private System.Windows.Forms.TextBox tbJefe;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Button btnMostrar;
     }
 }
 
