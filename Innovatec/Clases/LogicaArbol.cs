@@ -17,7 +17,7 @@ public class NodoOrganizacion
     }
 }
 
-// Esta clase maneja la lógica del árbol
+// Esta clase se encarga de manejar la logica del árbol
 public class ArbolJerarquia
 {
     public NodoOrganizacion Raiz { get; set; }
